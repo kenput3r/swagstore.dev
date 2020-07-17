@@ -382,20 +382,20 @@ $grid-breakpoint-has-widths: ($small, $medium-up);
 $grid-breakpoint-has-push: ($small, $medium-up);
 
 /*================ Color Variables ================*/
-
+{% assign use_dkt = settings.use_dkt %}
 // Text colors
-$color-text: {{ settings.color_text }};
+$color-text: {%if use_dkt%}{{settings.color_text_dkt}}{%else%}{{ settings.color_text }}{%endif%};
 $color-text-shadow: rgba(0,0,0,0.4);
-$color-body-text: {{ settings.color_body_text }};
-$color-sale-text: {{ settings.color_sale_text }};
-$color-small-button-text-border: {{ settings.color_small_button_text_border }};
-$color-text-field: {{ settings.color_text_field }};
-$color-text-field-text: {{ settings.color_text_field_text }};
-$color-navigation-text: {{ settings.color_text }};
+$color-body-text: {%if use_dkt%}{{settings.color_body_text_dkt}}{%else%}{{ settings.color_body_text }}{%endif%};
+$color-sale-text: {%if use_dkt%}{{settings.color_sale_text_dkt}}{%else%}{{ settings.color_sale_text }}{%endif%};
+$color-small-button-text-border: {%if use_dkt%}{{settings.color_small_button_text_border_dkt}}{%else%}{{ settings.color_small_button_text_border }}{%endif%};
+$color-text-field: {%if use_dkt%}{{settings.color_text_field_dkt}}{%else%}{{ settings.color_text_field }}{%endif%};
+$color-text-field-text: {%if use_dkt%}{{settings.color_text_field_text_dkt}}{%else%}{{ settings.color_text_field_text }}{%endif%};
+$color-navigation-text: {%if use_dkt%}{{settings.color_text_dkt}}{%else%}{{ settings.color_text }}{%endif%};
 
 // Button colors
-$color-btn-primary: {{ settings.color_button }};
-$color-btn-primary-text: {{ settings.color_button_text }};
+$color-btn-primary: {%if use_dkt%}{{settings.color_button_dkt}}{%else%}{{ settings.color_button }}{%endif%};
+$color-btn-primary-text: {%if use_dkt%}{{settings.color_button_text_dkt}}{%else%}{{ settings.color_button_text }}{%endif%};
 
 // Hover and focus states
 $color-text-focus: adaptiveColor({{ settings.color_text }}, {{ settings.color_text | color_brightness }});
@@ -416,15 +416,15 @@ $transition-duration-slow: 400ms;
 $transition-link-hover: $transition-duration-fast cubic-bezier(0.44, 0.13, 0.48, 0.87);
 
 // Backgrounds
-$color-body: {{ settings.color_body_bg }};
-$color-bg: {{ settings.color_body_bg }};
+$color-body: {%if use_dkt%}{{settings.color_body_bg_dkt}}{%else%}{{ settings.color_body_bg }}{%endif%};
+$color-bg: {%if use_dkt%}{{settings.color_body_bg_dkt}}{%else%}{{ settings.color_body_bg }}{%endif%};
 $color-drawer-background: rgba(0, 0, 0, 0.6);
-$color-bg-alt: {{ settings.color_body_text | color_modify: 'alpha', 0.05 }};
+$color-bg-alt: {%if use_dkt%}{{ settings.color_body_text_dkt | color_modify: 'alpha', 0.05 }}{%else%}{{ settings.color_body_text | color_modify: 'alpha', 0.05 }}{%endif%};
 
 // Overlays
-$color-overlay-title-text: {{ settings.color_image_overlay_text }};
-$color-image-overlay: {{ settings.color_image_overlay }};
-$opacity-image-overlay: {{ settings.image_overlay_opacity | divided_by: 100.00 }};
+$color-overlay-title-text: {%if use_dkt%}{{settings.color_image_overlay_text_dkt}}{%else%}{{ settings.color_image_overlay_text }}{%endif%};
+$color-image-overlay: {%if use_dkt%}{{settings.color_image_overlay_dkt}}{%else%}{{ settings.color_image_overlay }}{%endif%};
+$opacity-image-overlay: {%if use_dkt%}{{ settings.image_overlay_opacity_dkt | divided_by: 100.00 }}{%else%}{{ settings.image_overlay_opacity | divided_by: 100.00 }}{%endif%};
 
 {%- comment -%}
   Based on the image overlay opacity, either lighten or darken the image on hover
